@@ -3,7 +3,7 @@
     "versão" ; 2 ,
     "cria" ; [
    {
-    "src" : " ./index.js " ,
+    "src" : " ./server.js " ,
     "use" : " @vercel/node "
    }
    ],
