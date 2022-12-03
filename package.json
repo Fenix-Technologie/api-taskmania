@@ -1,7 +1,7 @@
 {
   "name": "WebAppKanban",
   "version": "1.0.0",
-  "description": "A Trello clone built using the MERN stack.",
+  "description": "Gerenciador de Tarefas",
   "main": "server.js",
   "scripts": {
     "start": "node server",
