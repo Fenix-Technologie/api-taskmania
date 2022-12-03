@@ -16,7 +16,6 @@
   },
   "author": "Arthur Ribeker",
   "license": "MIT",
- 
   "homepage": "url",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -25,7 +24,8 @@
     "express-validator": "^6.9.2",
     "gravatar": "^1.8.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.11.16"
+    "mongoose": "^5.11.16",
+    "netlify-lambda": "^2.0.15"
   },
   "devDependencies": {
     "concurrently": "^5.3.0",
