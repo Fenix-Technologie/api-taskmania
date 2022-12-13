@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  node:
+    build:
+      dockerfile: ./Dockerfile
+      context: .
+    image: taskmania-api
+    container_name: taskmania-api
+    ports:
+      - "3333:3333"
+    networks:
+      - taskmania-network
+    volumes:
+      - .:/usr/src/api
+    working_dir: "/usr/src/api"
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    container_name: taskmania-mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - taskmania-network
+networks:
+  taskmania-network:
+    driver: bridge

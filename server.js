@@ -43,6 +43,6 @@ if (process.env.NODE_ENV === 'produção') {
   });
 }
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3333;
 
 app.listen(PORT, () => console.log('Servidor Iniciado na Porta ' + PORT));
