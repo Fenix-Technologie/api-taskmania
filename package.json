@@ -1,5 +1,5 @@
 {
-  "name": "WebAppKanban",
+  "name": "Taskmania",
   "version": "1.0.0",
   "description": "Gerenciador de Tarefas",
   "main": "server.js",
