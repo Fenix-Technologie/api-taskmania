@@ -1,4 +1,4 @@
-const Board = require('../models/Board');
+const Board = require('../models/Board/Board');
 
 module.exports = async function (req, res, next) {
   const board = await Board.findById(req.header('boardId'));

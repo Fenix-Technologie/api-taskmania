@@ -1,5 +1,5 @@
 {
-  "name": "taskmania",
+  "name": "taskmania-api",
   "version": "1.0.0",
   "description": "Gerenciador de Tarefas",
   "main": "server.js",

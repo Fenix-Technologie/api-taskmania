@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
-const auth = require('../../middleware/auth');
+const auth = require('../../../middleware/auth');
 const jwt = require('jsonwebtoken');
 const { check, validationResult } = require('express-validator');
 require('dotenv').config();
 
-const User = require('../../models/User');
+const User = require('../../../models/User');
 
 // Get authorized user
 router.get('/', auth, async (req, res) => {

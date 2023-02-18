@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const auth = require('../../middleware/auth');
-const member = require('../../middleware/member');
+const auth = require('../../../middleware/auth');
+const member = require('../../../middleware/member');
 const { check, validationResult } = require('express-validator');
 
-const User = require('../../models/User');
-const Board = require('../../models/Board');
-const List = require('../../models/List');
-const Card = require('../../models/Card');
+const User = require('../../../models/User');
+const Board = require('../../../models/Board');
+const List = require('../../../models/List');
+const Card = require('../../../models/Card');
 
 // Add a card
 router.post(
