@@ -11,9 +11,9 @@ const router = express.Router();
 router
   .use("/users", users)
   .use("/auth", auth)
-  .use("/boards", boards)
-  .use("/lists", lists)
-  .use("/cards", cards)
-  .use("/checklists", checklists);
+  // .use("/boards", boards)
+  // .use("/lists", lists)
+  // .use("/cards", cards)
+  // .use("/checklists", checklists);
 
 module.exports = router;
