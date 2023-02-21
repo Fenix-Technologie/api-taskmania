@@ -1,6 +1,6 @@
 const BoardFindById = require('../../models/Board/FindById')
 
-const getActivitys = async (req, res) => {
+const getActivitysBoard = async (req, res) => {
   try {
     const { boardId } = req.params
     const board = await BoardFindById(boardId);
@@ -16,4 +16,4 @@ const getActivitys = async (req, res) => {
   }
 }
 
-module.exports = getActivitys
+module.exports = getActivitysBoard

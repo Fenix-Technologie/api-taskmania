@@ -1,6 +1,6 @@
 const Create = require('../../models/Board/Create')
 
-const create = async (req, res) => {
+const createBoard = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
@@ -19,4 +19,4 @@ const create = async (req, res) => {
   }
 }
 
-module.exports = create
+module.exports = createBoard

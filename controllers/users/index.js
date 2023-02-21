@@ -1,16 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const auth = require("../../middleware/auth");
-const gravatar = require("gravatar");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const { check, validationResult } = require("express-validator");
+const { check } = require("express-validator");
 require("dotenv").config();
 
-const createUser = require("./create");
+const createUser = require("./createUser");
 const getUserByEmail = require("./getUserWithEmail");
 
-// Register user
 router.post(
   "/",
   [
@@ -23,7 +19,6 @@ router.post(
   createUser
 );
 
-// Get users by email regex
 router.get("/:input", auth, getUserByEmail);
 
 module.exports = router;

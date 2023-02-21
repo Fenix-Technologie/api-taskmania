@@ -1,9 +1,9 @@
-const getByid = async (req, res) => {
+const getByIdBoard = async (req, res) => {
   try {
     const board = await Board.findById(req.params.id);
     if (!board) {
       return res.status(404).json({ msg: 'Quadro não encontrado!' });
-    }
+    }s
 
     res.json(board);
   } catch (err) {
@@ -12,4 +12,4 @@ const getByid = async (req, res) => {
   }
 }
 
-module.exports = getByid
+module.exports = getByIdBoard

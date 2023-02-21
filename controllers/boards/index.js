@@ -4,24 +4,24 @@ const auth = require('../../middleware/auth');
 const member = require('../../middleware/member');
 const { check, validationResult } = require('express-validator');
 
-const create = require('./create')
+const createBoard = require('./createBoard')
 const getUserBoards = require('./getUsersBoards')
-const getById = require('./getById')
-const getActivitys = require('./getActivity')
+const getByIdBoard = require('./getByIdBoard')
+const getActivitysBoard = require('./getActivityBoard')
 const changeBoardTitle = require('./changeBoardTitle')
 const addBoardMember = require('./addBoardMember')
 
 router.post(
   '/',
   [auth, [check('title', 'O título é obrigatório').not().isEmpty()]],
-  create
+  createBoard
 );
 
 router.get('/user/:id', auth, getUserBoards);
 
-router.get('/:id', auth, getById);
+router.get('/:id', auth, getByIdBoard);
 
-router.get('/activity/board/:boardId', auth, getActivitys);
+router.get('/activity/board/:boardId', auth, getActivitysBoard);
 
 router.patch(
   '/rename/board/:boardId/user/:userId',
