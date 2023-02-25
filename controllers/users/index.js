@@ -1,8 +1,8 @@
+require("dotenv").config();
 const express = require("express");
 const router = express.Router();
 const auth = require("../../middleware/auth");
 const { check } = require("express-validator");
-require("dotenv").config();
 
 const createUser = require("./createUser");
 const getUserByEmail = require("./getUserWithEmail");

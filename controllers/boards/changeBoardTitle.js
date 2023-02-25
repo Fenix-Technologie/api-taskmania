@@ -1,7 +1,8 @@
-const BoardFindById = require('../../models/Board/FindById')
+const BoardFindManyById = require('../../models/Board/FindManyById')
 const BoardAddActivity = require('../../models/Board/AddActivity')
 const BoardRenameBoard = require('../../models/Board/RenameBoard')
 const UserFindById = require('../../models/User/FindById')
+const { validationResult } = require('express-validator')
 
 const changeBoardTitle = async (req, res) => {
   const errors = validationResult(req);
@@ -12,7 +13,7 @@ const changeBoardTitle = async (req, res) => {
   try {
     const { boardId, userId } = req.params
     const { title } = req.body
-    let board = await BoardFindById(boardId);
+    let board = await BoardFindManyById(boardId);
     const user = await UserFindById(userId);
 
     if (!board) {

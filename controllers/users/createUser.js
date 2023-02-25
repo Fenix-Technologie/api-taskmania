@@ -1,8 +1,10 @@
+require("dotenv").config();
 const gravatar = require("gravatar");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Create = require("../../models/User/Create");
 const GetUserByEmail = require("../../models/User/GetUserByEmail");
+const { validationResult } = require("express-validator");
 
 const createUser = async (req, res) => {
   const errors = validationResult(req);
@@ -22,7 +24,7 @@ const createUser = async (req, res) => {
     const cryptPassword = await bcrypt.hash(password, await bcrypt.genSalt(10));
 
     // Register new user
-    await Create(name, email, avatar, cryptPassword);
+    const user = await Create(name, email, avatar, cryptPassword);
 
     // Return jsonwebtoken
     jwt.sign(
@@ -31,6 +33,7 @@ const createUser = async (req, res) => {
           id: user.id,
         },
       },
+      // eslint-disable-next-line no-undef
       process.env.JWT_SECRET,
       { expiresIn: 360000 },
       (err, token) => {

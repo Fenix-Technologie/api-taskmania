@@ -2,14 +2,15 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../../../middleware/auth');
 const member = require('../../../middleware/member');
-const { check, validationResult } = require('express-validator');
+const { check } = require('express-validator');
 
 const createList = require('./createList')
 const moveList = require('./movelist');
 const getAllBoardLists = require('./getAllBoardLists');
 
-const List = require('../../../models/List');
 const archiveAndUnarchiveList = require('./archiveAndUnarchiveList');
+const getListById = require('./getListById');
+const editListTitle = require('./editListTitle');
 
 // Add a list
 router.post(
@@ -22,45 +23,13 @@ router.post(
 router.get('/boardLists/:boardId', auth, getAllBoardLists);
 
 // Get a list by id
-router.get('/:id', auth, async (req, res) => {
-  try {
-    const list = await List.findById(req.params.id);
-    if (!list) {
-      return res.status(404).json({ msg: 'Lista não encontrada' });
-    }
-
-    res.json(list);
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Erro no Servidor');
-  }
-});
+router.get('/:listId', auth, getListById);
 
 // Edit a list's title
 router.patch(
-  '/rename/:id',
+  '/rename/:listId',
   [auth, member, [check('title', 'Título é obrigatório').not().isEmpty()]],
-  async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-
-    try {
-      const list = await List.findById(req.params.id);
-      if (!list) {
-        return res.status(404).json({ msg: 'Lista não encontrada' });
-      }
-
-      list.title = req.body.title;
-      await list.save();
-
-      res.json(list);
-    } catch (err) {
-      console.error(err.message);
-      res.status(500).send('Erro no Servidor');
-    }
-  }
+  editListTitle
 );
 
 // Archive/Unarchive a list

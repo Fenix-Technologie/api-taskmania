@@ -1,23 +1,25 @@
+const ListFindMany = require('../../models/List/FindManyList')
+const ListArchiveAndUnarchive = require('../../models/List/ArchiveAndUnarchiveList')
+const UserFindById = require('../../models/User/FindById')
+const BoardAddActivity = require('../../models/Board/AddActivity')
+
 const archiveAndUnarchiveList = async (req, res) => {
   try {
-    const { boardId, listId, userId } = req.params
-    const list = await List.findById(listId);
-    if (!list) {
+    const { boardId, listId, userId, archive } = req.params
+    const checkListExists = await ListFindMany.findById(listId);
+
+    if (!checkListExists) {
       return res.status(404).json({ msg: 'Lista não encontrada' });
     }
 
-    list.archived = req.params.archive === 'true';
-    await list.save();
+    const list = ListArchiveAndUnarchive(listId, archive)
 
     // Log activity
-    const user = await User.findById(userId);
-    const board = await Board.findById(boardId);
-    board.activity.unshift({
-      text: list.archived
-        ? `${user.name} lista arquivada '${list.title}'`
-        : `${user.name} lista enviada '${list.title}' para o quadro`,
-    });
-    await board.save();
+    const user = await UserFindById(userId);
+    const text = list.archived
+      ? `${user.name} lista arquivada '${list.title}'`
+      : `${user.name} lista enviada '${list.title}' para o quadro`
+    await BoardAddActivity(boardId, text);
 
     res.json(list);
   } catch (err) {

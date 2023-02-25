@@ -49,4 +49,6 @@ const BoardSchema = new Schema(
   }
 );
 
-module.exports = Board = model('board', BoardSchema);
+const Board = model('Board', BoardSchema);
+
+module.exports = Board

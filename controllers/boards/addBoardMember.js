@@ -1,4 +1,4 @@
-const BoardFindById = require('../../models/Board/FindById');
+const BoardFindManyById = require('../../models/Board/FindManyById')
 const UserFindById = require('../../models/User/FindById')
 const UserAddOneBoard = require('../../models/User/AddOneBoard')
 const AddNewMember = require('../../models/Board/AddNewMember')
@@ -7,7 +7,7 @@ const AddActivity = require('../../models/Board/AddActivity')
 const addBoardMember = async (req, res) => {
   try {
     const { boardId, userId } = req.params
-    let board = await BoardFindById(boardId);
+    let board = await BoardFindManyById(boardId);
     const user = await UserFindById(userId);
 
     if (!user) {

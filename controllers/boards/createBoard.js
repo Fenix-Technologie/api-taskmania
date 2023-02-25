@@ -1,3 +1,4 @@
+const { validationResult } = require('express-validator');
 const Create = require('../../models/Board/Create')
 
 const createBoard = async (req, res) => {

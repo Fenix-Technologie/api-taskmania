@@ -18,4 +18,6 @@ const ListSchema = new Schema({
   },
 });
 
-module.exports = List = model('list', ListSchema);
+const List = model('List', ListSchema);
+
+module.exports = List

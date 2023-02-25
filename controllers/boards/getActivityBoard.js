@@ -1,9 +1,9 @@
-const BoardFindById = require('../../models/Board/FindById')
+const BoardFindManyById = require('../../models/Board/FindManyById')
 
 const getActivitysBoard = async (req, res) => {
   try {
     const { boardId } = req.params
-    const board = await BoardFindById(boardId);
+    const board = await BoardFindManyById(boardId);
 
     if (!board) {
       return res.status(404).json({ msg: 'Quadro não encontrado!' });
