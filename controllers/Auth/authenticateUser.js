@@ -1,7 +1,7 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { validationResult } = require("express-validator");
-const GetUserByEmail = require("../../models/User/GetUserByEmail");
+const User = require("../../models/User");
 
 const authenticateUser = async (req, res) => {
   const errors = validationResult(req);
@@ -13,13 +13,13 @@ const authenticateUser = async (req, res) => {
 
   try {
     // See if user exists
-    let user = await GetUserByEmail(email);
+    let user = await  User.findOne({ email });
     if (!user) {
       return res.status(400).json({
         errors: [{ msg: "Usuario inválido" }],
       });
     }
-
+    
     // Check for email and password match
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
@@ -32,7 +32,7 @@ const authenticateUser = async (req, res) => {
     jwt.sign(
       {
         user: {
-          id: user.id,
+          id: user._id,
         },
       },
       process.env.JWT_SECRET,

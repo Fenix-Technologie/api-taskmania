@@ -1,5 +1,5 @@
-const User = require("./Schema");
+const User = require(".");
 
-const FindById = (id) => User.findById(id).select("-password");
+const FindById = async (id) => await User.findById(id).select("-password");
 
 module.exports = FindById

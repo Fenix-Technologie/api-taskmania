@@ -1,4 +1,4 @@
-const Board = require('./Schema')
+const Board = require('.')
 const UserFindById = require('../../models/User/FindById')
 const AddOneBoard = require('../../models/User/AddOneBoard')
 

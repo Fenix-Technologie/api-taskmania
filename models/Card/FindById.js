@@ -1,5 +1,5 @@
 const Card = require('./Schema')
 
-const FindById = (id) => Card.findById(id)
+const FindById = async (id) => await Card.findById(id)
 
 module.exports = FindById

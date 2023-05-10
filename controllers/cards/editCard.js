@@ -1,3 +1,5 @@
+const Card = require('../../models/Card')
+
 const editCard = async (req, res) => {
   try {
     const { id } = req.params

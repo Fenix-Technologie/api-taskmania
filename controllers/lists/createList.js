@@ -1,3 +1,7 @@
+const User = require('../../models/User')
+const Board = require('../../models/Board')
+const List = require('../../models/List')
+
 const { validationResult } = require("express-validator");
 
 const createList = async (req, res) => {

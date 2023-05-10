@@ -1,4 +1,4 @@
-const User = require("./Schema");
+const User = require(".");
 
 const Create = async (name, email, avatar, password) => {
   const user = new User({
@@ -8,7 +8,9 @@ const Create = async (name, email, avatar, password) => {
     password,
   });
 
-  user.save();
+  await user.save();
+
+  return user
 };
 
 module.exports = Create;

@@ -1,3 +1,5 @@
+const List = require('../../models/List')
+
 const getAllCards = async (req, res) => {
   try {
     const list = await List.findById(req.params.listId);

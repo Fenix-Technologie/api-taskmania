@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const auth = require('../../../middleware/auth');
-const member = require('../../../middleware/member');
+const auth = require('../../middleware/auth');
+const member = require('../../middleware/member');
 const { check } = require('express-validator');
 
 const createCard = require('./createCard')

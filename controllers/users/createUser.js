@@ -30,7 +30,7 @@ const createUser = async (req, res) => {
     jwt.sign(
       {
         user: {
-          id: user.id,
+          id: user._id,
         },
       },
       // eslint-disable-next-line no-undef

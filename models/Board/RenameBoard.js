@@ -1,5 +1,5 @@
-const Board = require('./Schema')
+const Board = require('.')
 
-const RenameBoard = (boardId, title) => Board.findOneAndUpdate({ _id: boardId }, { title })
+const RenameBoard = async (boardId, title) => await Board.findOneAndUpdate({ _id: boardId }, { title })
 
 module.exports = RenameBoard

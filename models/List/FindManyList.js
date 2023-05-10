@@ -1,6 +1,6 @@
-const List = require('./ Schema')
+const List = require('.')
 
-const FindManyList = (id) => List.find({
+const FindManyList = async (id) =>  await List.find({
   _id: {
     $in: { id }
   }

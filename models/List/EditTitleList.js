@@ -1,6 +1,6 @@
-const List = require('./Schema')
+const List = require('.')
 
-const ArchiveAndUnarchiveList = (id, title) => List.findOneAndUpdate({ _id: id }, {
+const ArchiveAndUnarchiveList = async (id, title) => await List.findOneAndUpdate({ _id: id }, {
   title
 }, {
   returnDocument: 'after'

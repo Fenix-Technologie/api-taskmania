@@ -1,3 +1,5 @@
+const Board = require('../../models/Board')
+
 const moveList = async (req, res) => {
   try {
     const { listId, boardId } = req.params;

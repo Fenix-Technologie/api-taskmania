@@ -1,5 +1,5 @@
-const User = require('./Schema')
+const User = require('.')
 
-const AddOneBoard = (userId, boadId) => User.findOneAndUpdate({ _id: userId }, { $push: { boards: boadId } })
+const AddOneBoard = async (userId, boadId) => await User.findOneAndUpdate({ _id: userId }, { $push: { boards: boadId } })
 
 module.exports = AddOneBoard

@@ -1,5 +1,5 @@
-const Board = require('./Schema')
+const Board = require('.')
 
-const FindManyById = (ids) => Board.find({ _id: { $in: { ids } } })
+const FindManyById = async (ids) => await Board.find({ _id: { $in: { ids } } })
 
 module.exports = FindManyById;

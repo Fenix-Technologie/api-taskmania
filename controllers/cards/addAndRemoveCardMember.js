@@ -1,3 +1,7 @@
+const Card = require('../../models/Card')
+const User = require('../../models/User')
+const Board = require('../../models/Board')
+
 const addAndRemoveCardMember = async (req, res) => {
   try {
     const { cardId, userId } = req.params;

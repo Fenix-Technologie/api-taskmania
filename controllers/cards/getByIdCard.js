@@ -1,3 +1,5 @@
+const Card = require('../../models/Card')
+
 const getByIdCard = async (req, res) => {
   try {
     const card = await Card.findById(req.params.id);

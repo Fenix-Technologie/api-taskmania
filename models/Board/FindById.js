@@ -1,5 +1,5 @@
-const Board = require('./Schema')
+const Board = require('.')
 
-const FindById = (id) => Board.findById(id)
+const FindById = async (id) => await Board.findById(id)
 
 module.exports = FindById

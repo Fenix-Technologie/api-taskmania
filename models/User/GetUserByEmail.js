@@ -1,7 +1,7 @@
-const User = require("./Schema");
+const User = require(".");
 
-const FindOneUserByEmail = (email) =>
-  User.findOne({ email }).select("-password");
+const FindOneUserByEmail = async (email) =>
+  await User.findOne({ email }).select("-password");
 
 
   module.exports = FindOneUserByEmail

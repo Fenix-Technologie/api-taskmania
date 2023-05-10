@@ -1,3 +1,8 @@
+const Card = require('../../models/Card')
+const User = require('../../models/User')
+const Board = require('../../models/Board')
+const List = require('../../models/List')
+
 const deleteCard = async (req, res) => {
   try {
     const { userId, boardId, listId, cardId } = req.params
