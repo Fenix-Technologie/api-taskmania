@@ -39,7 +39,12 @@ const authenticateUser = async (req, res) => {
       { expiresIn: 360000 },
       (err, token) => {
         if (err) throw err;
-        res.json({ token });
+        res.json({ 
+          name: user.name,
+          email: user.email,
+          avatar: user.avatar,
+          token
+         });
       }
     );
   } catch (err) {
