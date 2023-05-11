@@ -6,6 +6,9 @@ const BoardSchema = new Schema(
       type: String,
       required: true,
     },
+    description:{
+      type: String
+    },
     lists: [
       {
         type: Schema.Types.ObjectId,

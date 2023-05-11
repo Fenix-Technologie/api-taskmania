@@ -8,10 +8,9 @@ const createBoard = async (req, res) => {
   }
 
   try {
-    const { title, backgroundURL } = req.body;
-    const userId = req.user.id
+    const { title, backgroundURL, description, userId } = req.body;
 
-    const board = await Create(title, backgroundURL, userId)
+    const board = await Create(title, backgroundURL, userId, description)
 
     res.json(board);
   } catch (err) {

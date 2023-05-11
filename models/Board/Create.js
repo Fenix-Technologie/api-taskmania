@@ -9,6 +9,7 @@ const Create = async (title, backgroundURL, userId) => {
   const board = await Board({
     title,
     backgroundURL,
+    description,
     activity: [{
       text: `${user.name} Criou este quadro`,
     }],
