@@ -39,6 +39,7 @@ const createUser = async (req, res) => {
       (err, token) => {
         if (err) throw err;
         res.json({
+          id: user._id,
           name: user.name,
           email: user.email,
           avatar: user.avatar,

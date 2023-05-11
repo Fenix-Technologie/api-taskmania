@@ -13,7 +13,7 @@ const addBoardMember = require('./addBoardMember')
 
 router.post(
   '/',
-  [auth, [check('title', 'O título é obrigatório').not().isEmpty()]],
+  auth,
   createBoard
 );
 
