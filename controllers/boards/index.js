@@ -17,7 +17,7 @@ router.post(
   createBoard
 );
 
-router.get('/user/:id', auth, getUserBoards);
+router.get('/user', auth, getUserBoards);
 
 router.get('/:id', auth, getByIdBoard);
 

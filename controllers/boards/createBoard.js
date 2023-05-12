@@ -2,9 +2,9 @@ const Create = require('../../models/Board/Create')
 
 const createBoard = async (req, res) => {
   try {
-    const { title, backgroundURL, description, userId } = req.body;
+    const { title, backgroundURL, description } = req.body;
 
-    const board = await Create(title, backgroundURL, description, userId)
+    const board = await Create(title, backgroundURL, description, req.userId)
 
     res.json(board);
   } catch (err) {

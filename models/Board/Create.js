@@ -3,11 +3,8 @@ const UserFindById = require('../../models/User/FindById')
 const AddOneBoard = require('../../models/User/AddOneBoard')
 
 const Create = async (title, backgroundURL, description, userId) => {
-  console.log('userId')
-  console.log(userId);
   const user = await UserFindById(userId);
-  console.log('user')
-  console.log(user);
+
   // Create and save the board
   const board = await Board({
     title,

@@ -2,9 +2,8 @@ const BoardFindManyById = require('../../models/Board/FindManyById')
 
 const getByIdBoard = async (req, res) => {
   try {
-    const { id } = req.parms
-    const board = await BoardFindManyById(id);
-    
+    const board = await BoardFindManyById(req.userId);
+
     if (!board) {
       return res.status(404).json({ msg: 'Quadro não encontrado!' });
     }

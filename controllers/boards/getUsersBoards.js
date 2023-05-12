@@ -3,10 +3,9 @@ const BoardsFindManyById = require('../../models/Board/FindManyById')
 
 const getUserBoards = async (req, res) => {
   try {
-    const { id } = req.params
-    const user = await UserFindById(id);
+    const user = await UserFindById(req.userId);
 
-    const boards =  await BoardsFindManyById(user.boards._id);
+    const boards =  await BoardsFindManyById(user.boards);
 
     res.json(boards);
   } catch (err) {

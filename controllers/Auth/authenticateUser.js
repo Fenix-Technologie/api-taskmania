@@ -13,13 +13,13 @@ const authenticateUser = async (req, res) => {
 
   try {
     // See if user exists
-    let user = await  User.findOne({ email });
+    let user = await User.findOne({ email });
     if (!user) {
       return res.status(400).json({
         errors: [{ msg: "Usuario inválido" }],
       });
     }
-    
+
     // Check for email and password match
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
@@ -39,13 +39,13 @@ const authenticateUser = async (req, res) => {
       { expiresIn: 360000 },
       (err, token) => {
         if (err) throw err;
-        res.json({ 
-          id: user._id,
+        res.json({
+          _id: user._id,
           name: user.name,
           email: user.email,
           avatar: user.avatar,
           token
-         });
+        });
       }
     );
   } catch (err) {
