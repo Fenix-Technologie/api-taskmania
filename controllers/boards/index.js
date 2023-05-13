@@ -5,7 +5,7 @@ const member = require('../../middleware/member');
 const { check } = require('express-validator');
 
 const createBoard = require('./createBoard')
-const getUserBoards = require('./getUsersBoards')
+const getUserBoards = require('./getUserBoards')
 const getByIdBoard = require('./getByIdBoard')
 const getActivitysBoard = require('./getActivityBoard')
 const changeBoardTitle = require('./changeBoardTitle')

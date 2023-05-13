@@ -5,7 +5,7 @@ const getUserBoards = async (req, res) => {
   try {
     const user = await UserFindById(req.userId);
 
-    const boards =  await BoardsFindManyById(user.boards);
+    const boards = await BoardsFindManyById(user.boards);
 
     res.json(boards);
   } catch (err) {
