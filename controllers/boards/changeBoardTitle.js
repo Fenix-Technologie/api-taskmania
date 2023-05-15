@@ -23,7 +23,7 @@ const changeBoardTitle = async (req, res) => {
     // Log activity
     if (title !== board.title) {
       BoardAddActivity(boardId, {
-        text: `${user.name} quadro renomeado (de '${board.title}' para  '${title}')`,
+        text: `Notify: ${user.name} quadro renomeado (de '${board.title}' para  '${title}')`,
       });
     }
 

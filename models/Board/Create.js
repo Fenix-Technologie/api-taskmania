@@ -11,7 +11,7 @@ const Create = async (title, backgroundURL, description, userId) => {
     backgroundURL,
     description,
     activity: [{
-      text: `${user.name} Criou este quadro`,
+      text: `Information: ${user.name} Criou este quadro`,
     }],
     members: [{ user: user.id, name: user.name }]
   }).save();

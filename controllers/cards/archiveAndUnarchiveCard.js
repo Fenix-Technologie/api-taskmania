@@ -20,8 +20,8 @@ const archiveAndUnarchiveCard = async (req, res) => {
     const board = await Board.findById(boardId);
     board.activity.unshift({
       text: card.archived
-        ? `${user.name} cartão arquivado '${card.title}'`
-        : `${user.name} cartão enviado '${card.title}' para o quadro`,
+        ? `information: ${user.name} cartão arquivado '${card.title}'`
+        : `information: ${user.name} cartão enviado '${card.title}' para o quadro`,
     });
     await board.save();
 

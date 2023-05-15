@@ -20,7 +20,7 @@ const deleteCard = async (req, res) => {
     const user = await User.findById(userId);
     const board = await Board.findById(boardId);
     board.activity.unshift({
-      text: `${user.name} excluído '${card.title}' de '${list.title}'`,
+      text: `Warninig: ${user.name} excluído '${card.title}' de '${list.title}'`,
     });
     await board.save();
 

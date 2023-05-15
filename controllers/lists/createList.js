@@ -25,7 +25,7 @@ const createList = async (req, res) => {
     // Log activity
     const user = await User.findById(req.user.id);
     board.activity.unshift({
-      text: `${user.name} adicionado '${title}' para este quadro.`,
+      text: `Warning: ${user.name} adicionado '${title}' para este quadro.`,
     });
     await board.save();
 

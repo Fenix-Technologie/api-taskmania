@@ -25,7 +25,7 @@ const addBoardMember = async (req, res) => {
 
     // Log activity
     await AddActivity(boardId, {
-      text: `${user.name} juntou-se a esta quadro`,
+      text: `Information: ${user.name} juntou-se a esta quadro`,
     });
 
     res.json(board);

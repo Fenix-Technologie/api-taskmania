@@ -17,8 +17,8 @@ const archiveAndUnarchiveList = async (req, res) => {
     // Log activity
     const user = await UserFindById(userId);
     const text = list.archived
-      ? `${user.name} lista arquivada '${list.title}'`
-      : `${user.name} lista enviada '${list.title}' para o quadro`
+      ? `Warning: ${user.name} lista arquivada '${list.title}'`
+      : `Warning: ${user.name} lista enviada '${list.title}' para o quadro`
     await BoardAddActivity(boardId, text);
 
     res.json(list);

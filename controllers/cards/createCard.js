@@ -27,7 +27,7 @@ const createCard = async (req, res) => {
     const user = await User.findById(req.user.id);
     const board = await Board.findById(boardId);
     board.activity.unshift({
-      text: `${user.name} added '${title}' to '${list.title}'`,
+      text: `Notify: ${user.name} added '${title}' to '${list.title}'`,
     });
     await board.save();
 
