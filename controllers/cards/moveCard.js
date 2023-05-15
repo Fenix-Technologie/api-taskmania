@@ -37,7 +37,7 @@ const moveCard = async (req, res) => {
       const board = await Board.findById(boardId);
       const card = await Card.findById(cardId);
       board.activity.unshift({
-        text: `Notify: ${user.name} movido '${card.title}' de '${from.title}' para '${to.title}'`,
+        text: `information: ${user.name} movido '${card.title}' de '${from.title}' para '${to.title}'`,
       });
       await board.save();
     }
