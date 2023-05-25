@@ -2,41 +2,41 @@ const { Schema, model } = require('mongoose');
 
 const CardSchema = new Schema({
   title: {
-    type: String,
+    type: String,     // Título da Task, requirido
     required: true,
   },
   description: {
-    type: String,
+    type: String, // Descrição opcional para a task
   },
   label: {
-    type: String,
+    type: String, // Informações a mais a qual queria a dicionar
   },
-  members: [
+  members: [ // Array que condiz com os usuários que estão adicionados a esta tarefa
     {
       _id: false,
       user: {
         type: Schema.Types.ObjectId,
-        ref: 'users',
+        ref: 'users',                   // Id dos usuários referenciado a coleção de usuários
       },
       name: {
         type: String,
-        required: true,
+        required: true,    // nome do usuário
       },
     },
   ],
-  checklist: [
+  checklist: [ // passos para serem cumpridos na tarefa
     {
       text: {
-        type: String,
+        type: String, // texto discritivo
       },
       complete: {
-        type: Boolean,
+        type: Boolean, // completado ou não
       },
     },
   ],
   archived: {
     type: Boolean,
-    required: true,
+    required: true,    // Tarefa está arquivada ou não, sendo por padrão não estar arquivado
     default: false,
   },
 });

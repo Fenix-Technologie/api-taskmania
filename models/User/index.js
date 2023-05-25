@@ -2,25 +2,25 @@ const { Schema, model } = require('mongoose');
 
 const UserSchema = new Schema({
   name: {
-    type: String,
+    type: String,        // Nome dado ao usuário, requirido
     required: true,
   },
   email: {
     type: String,
-    required: true,
+    required: true, // Email do usuário, requirido e deve ser único
     unique: true,
   },
   password: {
     type: String,
-    required: true,
+    required: true, // Senha do usuário, guardado em formato de hash, requirido
   },
   avatar: {
-    type: String,
+    type: String, // Uma imagem que o usuário se identifica
   },
   boards: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'boards',
+      ref: 'boards',                    // Coleção de id's dos boards a qual o usuário faz parte
     },
   ],
 });

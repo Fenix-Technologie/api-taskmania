@@ -4,51 +4,51 @@ const BoardSchema = new Schema(
   {
     title: {
       type: String,
-      required: true,
+      required: true,         // Titulo dado ao Board para identificação, requirido
     },
     description:{
-      type: String  
+      type: String  // Descrição para o board, opcional
     },
     lists: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'lists',
+        ref: 'lists',                 // Array de Id's de listas que fazem parte do board
       },
     ],
-    activity: [
+    activity: [ //Notificações de atividades criadas dentro do board
       {
         text: {
-          type: String,
+          type: String,   // texto da atividade
         },
         date: {
           type: Date,
-          default: Date.now,
+          default: Date.now, // data de quando a atividade foi criada
         },
       },
     ],
     backgroundURL: {
-      type: String,
+      type: String, // Cor/Imagem de criação
     },
-    members: [
+    members: [          // array de membros que fazem parte do board
       {
         _id: false,
         user: {
-          type: Schema.Types.ObjectId,
+          type: Schema.Types.ObjectId,        // Id dos usuários referenciando a coleção de usuários
           ref: 'users',
         },
         name: {
           type: String,
-          required: true,
+          required: true, // nome do usuário, requirido
         },
         role: {
           type: String,
-          default: 'admin',
+          default: 'admin',   // criação por padrão do primeiro usuário do board, sendo assim o administrador
         },
       },
     ],
   },
   {
-    timestamps: true,
+    timestamps: true, // Timestamp consiste na criatedAt e UpdatedAt 
   }
 );
 
