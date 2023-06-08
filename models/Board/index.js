@@ -12,7 +12,7 @@ const BoardSchema = new Schema(
     lists: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'lists',                 // Array de Id's de listas que fazem parte do board
+        ref: 'list',                 // Array de Id's de listas que fazem parte do board
       },
     ],
     activity: [ //Notificações de atividades criadas dentro do board

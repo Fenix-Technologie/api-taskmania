@@ -9,7 +9,8 @@ const getUserBoards = require('./getUserBoards')
 const getByIdBoard = require('./getByIdBoard')
 const getActivitysBoard = require('./getActivityBoard')
 const changeBoardTitle = require('./changeBoardTitle')
-const addBoardMember = require('./addBoardMember')
+const addBoardMember = require('./addBoardMember');
+const getBoardById = require('./getBoardById');
 
 router.post(
   '/',
@@ -20,6 +21,8 @@ router.post(
 router.get('/user', auth, getUserBoards);
 
 router.get('/:id', auth, getByIdBoard);
+
+router.get('/board/:boardId', getBoardById)
 
 router.get('/activity/board/:boardId', auth, getActivitysBoard);
 
