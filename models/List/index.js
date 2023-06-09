@@ -7,8 +7,8 @@ const ListSchema = new Schema({
   },
   cards: [
     {
-      type: Schema.Types.ObjectId,  // Coleção de ids dos cards que compoem a lista naquele momento, referenciando a coleção de tasks
-      ref: 'cards',
+      type: String,  // Coleção de ids dos cards que compoem a lista naquele momento, referenciando a coleção de tasks
+      ref: 'Card',
     },
   ],
   archived: {

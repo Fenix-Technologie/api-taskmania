@@ -6,13 +6,13 @@ const BoardSchema = new Schema(
       type: String,
       required: true,         // Titulo dado ao Board para identificação, requirido
     },
-    description:{
+    description: {
       type: String  // Descrição para o board, opcional
     },
     lists: [
       {
-        type: Schema.Types.ObjectId,
-        ref: 'list',                 // Array de Id's de listas que fazem parte do board
+        type: String,
+        ref: 'List',                 // Array de Id's de listas que fazem parte do board
       },
     ],
     activity: [ //Notificações de atividades criadas dentro do board
@@ -33,8 +33,8 @@ const BoardSchema = new Schema(
       {
         _id: false,
         user: {
-          type: Schema.Types.ObjectId,        // Id dos usuários referenciando a coleção de usuários
-          ref: 'users',
+          type: String,        // Id dos usuários referenciando a coleção de usuários
+          ref: 'User',
         },
         name: {
           type: String,

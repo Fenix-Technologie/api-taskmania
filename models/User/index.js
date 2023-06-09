@@ -19,7 +19,7 @@ const UserSchema = new Schema({
   },
   boards: [
     {
-      type: Schema.Types.ObjectId,
+      type: String,
       ref: 'boards',                    // Coleção de id's dos boards a qual o usuário faz parte
     },
   ],

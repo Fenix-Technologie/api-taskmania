@@ -1,9 +1,7 @@
 const FindById = require('../../models/Board/FindById')
 
 const getBoardById = async (req, res) => {
-    const { params: { boardId } } = req
-    console.log(req.params)
-    console.log("Board ID: ", boardId)
+  const { params: { boardId } } = req
   try {
     const board = await FindById(boardId);
 

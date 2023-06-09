@@ -11,11 +11,13 @@ const createList = async (req, res) => {
   }
 
   try {
-    const title = req.body.title;
-    const boardId = req.header('boardId');
+    const { title, boardId } = req.body;
+    console.log(boardId);
+    console.log(title);
 
     // Create and save the list
     const newList = new List({ title });
+    
     const list = await newList.save();
 
     // Assign the list to the board

@@ -15,7 +15,7 @@ const CardSchema = new Schema({
     {
       _id: false,
       user: {
-        type: Schema.Types.ObjectId,
+        type: String,
         ref: 'users',                   // Id dos usuários referenciado a coleção de usuários
       },
       name: {
