@@ -11,6 +11,7 @@ const getActivitysBoard = require('./getActivityBoard')
 const changeBoardTitle = require('./changeBoardTitle')
 const addBoardMember = require('./addBoardMember');
 const getBoardById = require('./getBoardById');
+const updateBoardLists = require('./updateBoardLists')
 
 router.post(
   '/',
@@ -33,5 +34,7 @@ router.patch(
 );
 
 router.patch('/board/:boardId/addMember/user/:userId', [auth, member], addBoardMember);
+
+router.put('/board/update/lists', [auth, member], updateBoardLists)
 
 module.exports = router;

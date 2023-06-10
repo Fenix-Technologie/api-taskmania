@@ -1,7 +1,8 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
+const User = require('../models/User')
 
-module.exports = function (req, res, next) {
+module.exports = async function  (req, res, next) {
   // Get token from header
   const token = req.header('authorization');
   // Check if no token
@@ -12,7 +13,8 @@ module.exports = function (req, res, next) {
   // Verify token
   try {
     const decoded = jwt.verify(token.split(" ")[1], process.env.JWT_SECRET);
-    req.user = decoded.user;
+
+    req.user = await User.findById(decoded.user.id).select('-password');
     req.userId = decoded.user.id
     next();
   } catch (err) {

@@ -19,7 +19,7 @@ const archiveAndUnarchiveList = async (req, res) => {
     const text = list.archived
       ? `Warning: ${user.name} lista arquivada '${list.title}'`
       : `Warning: ${user.name} lista enviada '${list.title}' para o quadro`
-    await BoardAddActivity(boardId, text);
+    await BoardAddActivity(boardId, { text });
 
     res.json(list);
   } catch (err) {
