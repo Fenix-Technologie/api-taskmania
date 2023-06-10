@@ -12,8 +12,6 @@ const createList = async (req, res) => {
 
   try {
     const { title, boardId } = req.body;
-    console.log(boardId);
-    console.log(title);
 
     // Create and save the list
     const newList = new List({ title });
