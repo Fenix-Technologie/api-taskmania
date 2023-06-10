@@ -5,12 +5,12 @@ const member = require('../../middleware/member');
 const { check } = require('express-validator');
 
 const createList = require('./createList')
-const moveList = require('./movelist');
 const getAllBoardLists = require('./getAllBoardLists');
 
 const archiveAndUnarchiveList = require('./archiveAndUnarchiveList');
 const getListById = require('./getListById');
 const editListTitle = require('./editListTitle');
+const deleteList = require('./deleteList')
 
 // Add a list
 router.post(
@@ -35,7 +35,6 @@ router.patch(
 // Archive/Unarchive a list
 router.patch('/board/:boardId/archive/:archive/list/:listId/user/:userId', [auth, member], archiveAndUnarchiveList);
 
-// Move a list
-router.patch('/board/:boardId/move/list/:listid', [auth, member], moveList);
+router.delete('/list', [auth, member], deleteList)
 
 module.exports = router;

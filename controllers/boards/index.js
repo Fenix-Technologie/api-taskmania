@@ -12,6 +12,7 @@ const changeBoardTitle = require('./changeBoardTitle')
 const addBoardMember = require('./addBoardMember');
 const getBoardById = require('./getBoardById');
 const updateBoardLists = require('./updateBoardLists')
+const deleteBoard = require('./deleteBoard')
 
 router.post(
   '/',
@@ -36,5 +37,7 @@ router.patch(
 router.patch('/board/:boardId/addMember/user/:userId', [auth, member], addBoardMember);
 
 router.put('/board/update/lists', [auth, member], updateBoardLists)
+
+router.delete('/board/delete', [auth, member], deleteBoard)
 
 module.exports = router;
