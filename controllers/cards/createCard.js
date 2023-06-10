@@ -11,8 +11,7 @@ const createCard = async (req, res) => {
   }
 
   try {
-    const { title, listId } = req.body;
-    const boardId = req.header('boardId');
+    const { title, listId, boardId } = req.body;
 
     // Create and save the card
     const newCard = new Card({ title });
