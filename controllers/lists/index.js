@@ -27,7 +27,7 @@ router.get('/:listId', auth, getListById);
 
 // Edit a list's title
 router.patch(
-  '/rename/:listId',
+  '/rename/',
   [auth, member, [check('title', 'Título é obrigatório').not().isEmpty()]],
   editListTitle
 );

@@ -8,15 +8,14 @@ const editListTitle = async (req, res) => {
   }
 
   try {
-    const { listId } = req.params
-    const { title } = req.body
+    const { title, listId } = req.body
     const list = await EditTitleList(listId, title);
 
     if (!list) {
       return res.status(404).json({ msg: 'Lista não encontrada' });
     }
 
-    
+
 
     res.json(list);
   } catch (err) {

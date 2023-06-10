@@ -5,6 +5,8 @@ const UpdateBoardLists = async (boardId, lists) => {
     $set: {
       lists
     }
+  }, {
+    returnDocument: 'after'
   })
   return changedLists
 }
