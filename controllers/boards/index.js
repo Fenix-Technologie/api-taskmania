@@ -27,7 +27,7 @@ router.get('/board/:boardId', getBoardById)
 router.get('/activity/board/:boardId', auth, getActivitysBoard);
 
 router.patch(
-  '/rename/board/:boardId/user/:userId',
+  '/rename/board',
   [auth, member, [check('title', 'Título é obrigatório').not().isEmpty()]],
   changeBoardTitle
 );

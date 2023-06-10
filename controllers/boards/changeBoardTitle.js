@@ -11,10 +11,9 @@ const changeBoardTitle = async (req, res) => {
   }
 
   try {
-    const { boardId, userId } = req.params
-    const { title } = req.body
+    const { title, boardId } = req.body
     let board = await BoardFindManyById(boardId);
-    const user = await UserFindById(userId);
+    const user = await UserFindById(req.user.id);
 
     if (!board) {
       return res.status(404).json({ msg: 'Quadro não encontrado' });

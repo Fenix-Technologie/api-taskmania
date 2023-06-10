@@ -7,12 +7,13 @@ module.exports = async function (req, res, next) {
   if (!board) {
     return res.status(404).json({ msg: 'Quadro não encontrado' });
   }
-  const members = board.members.map((member) => member.user);
-  console.log(members);
-  console.log(members.find((el) => el === req.user.id));
-  if (members.includes(req.user.id)) {
-    next();
-  } else {
-    res.status(401).json({ msg: 'Você deve ser um membro deste quadro para fazer alterações' });
-  }
+  const membersID = board.members.map((member) => member.user._id.valueOf());
+  // console.log("Members: ", members);
+  // console.log("req.member: ", members.find((el) => el === req.user.id));
+  // console.log("userID: ",req.user);
+   if (membersID.includes(req.user.id)) {
+     next();
+   } else {
+     res.status(401).json({ msg: 'Você deve ser um membro deste quadro para fazer alterações' });
+   }
 };
