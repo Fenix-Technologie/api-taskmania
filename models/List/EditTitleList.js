@@ -4,5 +4,4 @@ const ArchiveAndUnarchiveList = async (id, title) => await List.findByIdAndUpdat
   title
 })
 
-
 module.exports = ArchiveAndUnarchiveList

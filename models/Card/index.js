@@ -37,8 +37,16 @@ const CardSchema = new Schema({
     default: false,
   },
   deadline: {
-    type: Date,
+    type: Date,  // data limite
     default: Date.now
+  },
+  priority: {
+    type: String,
+    default: 'very low' // very high red, high laranja, mid amarelo, low bege/creme, very low azul, concluido verde
+  },
+  background: {
+    type: String,
+    default: ''
   }
 },
   {
