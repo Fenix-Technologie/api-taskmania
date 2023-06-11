@@ -34,7 +34,7 @@ router.patch(
   changeBoardTitle
 );
 
-router.patch('/board/:boardId/addMember/user/:userId', [auth, member], addBoardMember);
+router.patch('/board/addMember', [auth, member], addBoardMember);
 
 router.put('/board/update/lists', [auth, member], updateBoardLists)
 
