@@ -8,9 +8,6 @@ const CardSchema = new Schema({
   description: {
     type: String, // Descrição opcional para a task
   },
-  label: {
-    type: String, // Informações a mais a qual queria a dicionar
-  },
   members: [ // Array que condiz com os usuários que estão adicionados a esta tarefa
     {
       _id: false,
@@ -39,7 +36,15 @@ const CardSchema = new Schema({
     required: true,    // Tarefa está arquivada ou não, sendo por padrão não estar arquivado
     default: false,
   },
-});
+  deadline: {
+    type: Date,
+    default: Date.now
+  }
+},
+  {
+    timestamps: true, // Timestamp consiste na criatedAt e UpdatedAt 
+  },
+);
 
 const Card = model('Card', CardSchema);
 

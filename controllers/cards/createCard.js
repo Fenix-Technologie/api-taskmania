@@ -30,7 +30,7 @@ const createCard = async (req, res) => {
     });
     await board.save();
 
-    res.json({ cardId: card.id, listId });
+    res.json({ card, listId });
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Erro no Servidor');
