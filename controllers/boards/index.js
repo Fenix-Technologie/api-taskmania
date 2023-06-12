@@ -13,6 +13,8 @@ const addBoardMember = require('./addBoardMember');
 const getBoardById = require('./getBoardById');
 const updateBoardLists = require('./updateBoardLists')
 const deleteBoard = require('./deleteBoard')
+const deleteMember = require('./deleteMember')
+const ChageMemberRole = require('./ChangeMemberRole')
 
 router.post(
   '/',
@@ -39,5 +41,10 @@ router.patch('/board/addMember', [auth, member], addBoardMember);
 router.put('/board/update/lists', [auth, member], updateBoardLists)
 
 router.delete('/board/delete', [auth, member], deleteBoard)
+
+router.patch('/board/member/remove', [auth, member], deleteMember)
+
+router.patch('/board/member/role', [auth, member], ChageMemberRole)
+
 
 module.exports = router;
