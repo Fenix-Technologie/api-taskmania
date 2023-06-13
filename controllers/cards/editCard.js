@@ -2,14 +2,13 @@ const Card = require('../../models/Card')
 
 const editCard = async (req, res) => {
   try {
-    const { id } = req.params
-    const { title, description, label } = req.body;
+    const { cardId, title, description, deadline, priority, background } = req.body;
 
     if (title === '') {
       return res.status(400).json({ msg: 'Título é obrigatório' });
     }
 
-    const card = await Card.findById(id);
+    const card = await Card.findById(cardId);
     if (!card) {
       return res.status(404).json({ msg: 'Cartão não encontrado' });
     }
@@ -18,8 +17,14 @@ const editCard = async (req, res) => {
     if (description || description === '') {
       card.description = description;
     }
-    if (label || label === 'none') {
-      card.label = label;
+    if (deadline) {
+      card.deadline = deadline;
+    }
+    if (priority || priority === '') {
+      card.priority = priority
+    }
+    if (background || background === '') {
+      card.background = background
     }
     await card.save();
 

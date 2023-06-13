@@ -23,7 +23,7 @@ router.get('/listCards/:listId', auth, getAllCard);
 
 router.get('/:id', auth, getByIdCard);
 
-router.patch('/edit/card/:id', [auth, member], editCard);
+router.patch('/edit/card/', [auth, member], editCard);
 
 router.patch('/board/:boardId/user/:userId/archive/:archive/card/:cardId', [auth, member], archiveAndUnarchiveCard);
 
