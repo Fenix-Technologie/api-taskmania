@@ -11,6 +11,7 @@ const archiveAndUnarchiveList = require("./archiveAndUnarchiveList");
 const getListById = require("./getListById");
 const editListTitle = require("./editListTitle");
 const deleteList = require("./deleteList");
+const changeCardOrder = require('./changeCardOrder')
 
 // Add a list
 router.post(
@@ -24,6 +25,8 @@ router.get("/boardLists/:boardId", auth, getAllBoardLists);
 
 // Get a list by id
 router.get("/:listId", auth, getListById);
+
+router.put("/change/cards", [auth, member], changeCardOrder)
 
 // Edit a list's title
 router.patch("/rename", [auth, member], editListTitle);
