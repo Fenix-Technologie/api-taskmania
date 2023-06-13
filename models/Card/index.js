@@ -46,7 +46,7 @@ const CardSchema = new Schema({
   },
   background: {
     type: String,
-    default: ''
+    default: '#8DC9FF'
   }
 },
   {
