@@ -19,11 +19,11 @@ const addBoardMember = async (req, res) => {
     if (existMember) {
       return res.status(400).json({ msg: 'Já é um membro' });
     }
-    await UserAddOneBoard(user._id, boardId);
-
 
     // Add user to board's members with 'normal' role
     const newMemberAdd = await AddNewMember(boardId, { user: user._id, name: user.name, role: 'normal' });
+
+    await UserAddOneBoard(user._id, boardId);
 
     // Log activity
     await AddActivity(boardId, {

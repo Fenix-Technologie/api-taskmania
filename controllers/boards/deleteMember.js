@@ -16,10 +16,9 @@ const deleteMember = async (req, res) => {
 
         const user = await GetUserById(userId)
 
-        const arr = board.members.filter(member => member.user._id.valueOf() != userId)
 
-        console.log(arr)
-        
+        const arr = board.members.filter(member => member.user._id != userId)
+
         await DeleteMember(boardId, arr)
         
         await removeBoard(boardId, userId)
