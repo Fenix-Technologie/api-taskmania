@@ -26,7 +26,7 @@ const addAndRemoveCardMember = async (req, res) => {
     await card.save();
 
     // Log activity
-    await AddActivity(boardId, { text: `Notify: ${user.name} ${add ? 'joined' : 'left'} '${card.title}'` })
+    await AddActivity(boardId, { text: `Notify: ${user.name} ${add ? 'foi atribuido a' : 'foi desatruido da'} '${card.title}'` })
 
     res.json(card);
   } catch (err) {
