@@ -29,7 +29,7 @@ router.patch('/board/:boardId/user/:userId/archive/:archive/card/:cardId', [auth
 
 router.patch('/board/:boardId/move/card/:cardId', [auth, member], moveCard);
 
-router.put('/addMember/:add/card/:cardId/user/:userId', [auth, member], addAndRemoveCardMember);
+router.put('/addMember/card/user/', [auth, member], addAndRemoveCardMember);
 
 router.delete('user/:userId/board/:boardId/list/:listId/card/:cardId', [auth, member], deleteCard);
 

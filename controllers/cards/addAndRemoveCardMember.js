@@ -4,14 +4,13 @@ const Board = require('../../models/Board')
 
 const addAndRemoveCardMember = async (req, res) => {
   try {
-    const { cardId, userId } = req.params;
+    const { cardId, userId, add } = req.body;
     const card = await Card.findById(cardId);
     const user = await User.findById(userId);
     if (!card || !user) {
       return res.status(404).json({ msg: 'Cartão/usuário não encontrado' });
     }
 
-    const add = req.params.add === 'true';
     const members = card.members.map((member) => member.user);
     const index = members.indexOf(userId);
     if ((add && members.includes(userId)) || (!add && index === -1)) {
