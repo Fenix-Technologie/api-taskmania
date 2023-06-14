@@ -38,6 +38,6 @@ router.patch(
   archiveAndUnarchiveList
 );
 
-router.delete("/list", [auth, member], deleteList);
+router.delete("/list/:listId/board/:boardId", [auth, member], deleteList);
 
 module.exports = router;

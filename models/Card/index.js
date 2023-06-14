@@ -38,7 +38,7 @@ const CardSchema = new Schema({
   },
   deadline: {
     type: String,  // data limite
-    default: new Date().toLocaleString('pt-BR').split(' ')[0]
+    default: new Date().toLocaleString('pt-BR').split('T')[0]
   },
   priority: {
     type: String,
