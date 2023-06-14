@@ -1,12 +1,13 @@
 const Card = require('../../models/Card')
 const User = require('../../models/User')
-const Board = require('../../models/Board')
+const AddActivity = require('../../models/Board/AddActivity')
 
 const addAndRemoveCardMember = async (req, res) => {
   try {
-    const { cardId, userId, add } = req.body;
+    const { cardId, userId, add, boardId } = req.body;
     const card = await Card.findById(cardId);
-    const user = await User.findById(userId);
+    const user = await User.findById(userId).select('-password');
+
     if (!card || !user) {
       return res.status(404).json({ msg: 'Cartão/usuário não encontrado' });
     }
@@ -25,11 +26,7 @@ const addAndRemoveCardMember = async (req, res) => {
     await card.save();
 
     // Log activity
-    const board = await Board.findById(req.header('boardId'));
-    board.activity.unshift({
-      text: `Notify: ${user.name} ${add ? 'joined' : 'left'} '${card.title}'`,
-    });
-    await board.save();
+    await AddActivity(boardId, { text: `Notify: ${user.name} ${add ? 'joined' : 'left'} '${card.title}'` })
 
     res.json(card);
   } catch (err) {
