@@ -6,9 +6,9 @@ const deleteList = async (req, res) => {
   try {
     await ListDelete(listId)
     await AddActivity(boardId, {
-      text: `a lista foi excluída pelo ${req.user.name}`
+      text: `Warning: A lista foi excluída pelo ${req.user.name}`
     })
-
+s
     res.status(200).send('Lista excluida com sucesso')
   } catch (error) {
     res.status(500).send('Algo deu errado no servidor')
