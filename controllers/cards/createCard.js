@@ -1,6 +1,6 @@
 const Card = require('../../models/Card')
 const User = require('../../models/User')
-const Board = require('../../models/Board')
+const AddActivity = require('../../models/Board/AddActivity')
 const List = require('../../models/List')
 const { validationResult } = require('express-validator');
 
@@ -23,12 +23,9 @@ const createCard = async (req, res) => {
     await list.save();
 
     // Log activity
-    const user = await User.findById(req.user.id);
-    const board = await Board.findById(boardId);
-    board.activity.unshift({
-      text: `Notify: ${user.name} added '${title}' to '${list.title}'`,
-    });
-    await board.save();
+    await AddActivity(boardId, {
+      text: `Notify: ${req.user.name} added '${title}' to '${list.title}'`
+    })
 
     res.json({ card, listId });
   } catch (err) {

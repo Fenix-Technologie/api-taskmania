@@ -1,5 +1,4 @@
-const User = require('../../models/User')
-const Board = require('../../models/Board')
+const AddActivity = require('../../models/Board/AddActivity')
 const List = require('../../models/List')
 
 const { validationResult } = require("express-validator");
@@ -15,7 +14,7 @@ const createList = async (req, res) => {
 
     // Create and save the list
     const newList = new List({ title });
-    
+
     const list = await newList.save();
 
     // Assign the list to the board
@@ -23,9 +22,8 @@ const createList = async (req, res) => {
     board.lists.push(list.id);
 
     // Log activity
-    const user = await User.findById(req.user.id);
-    board.activity.unshift({
-      text: `Warning: ${user.name} adicionado '${title}' para este quadro.`,
+    AddActivity(boardId, {
+      text: `Warning: ${req.user.name} adicionado '${title}' para este quadro.`,
     });
     await board.save();
 
