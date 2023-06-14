@@ -2,7 +2,7 @@ const FindById = require("../models/Board/FindById");
 
 
 module.exports = async function (req, res, next) {
-  const { boardId } = req.body;
+  const boardId = req.body.boardId || req.params.boardId
   const board = await FindById(boardId);
   if (!board) {
     return res.status(404).json({ msg: 'Quadro não encontrado' });
