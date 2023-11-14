@@ -1,12 +1,14 @@
-require("dotenv").config();
-const express = require("express");
-const router = express.Router();
 const auth = require("../../middleware/auth");
-const { check } = require("express-validator");
 
 const createUser = require("./createUser");
-const getUserByEmail = require("./getUserWithEmail");
-const getUserWithToken = require("./getUserWithToken");
+
+import express from 'express'
+import 'dotenv/config'
+import { check } from 'express-validator'
+import { getUserByEmail } from './getUserWithEmail';
+import { getUserWithToken } from './getUserWithToken';
+
+export const router = express.Router();
 
 router.post(
   "/",

@@ -1,25 +1,36 @@
-require("dotenv").config();
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
 const Create = require("../../models/User/Create");
-const GetUserByEmail = require("../../models/User/GetUserByEmail");
-const { validationResult } = require("express-validator");
 
-const createUser = async (req, res) => {
+import 'dotenv/config'
+import bcrypt from 'bcryptjs'
+import jwt from 'jsonwebtoken'
+import { validationResult } from 'express-validator'
+import { z } from 'zod'
+import { Request, Response } from 'express'
+import { getUserByEmail } from './getUserWithEmail';
+
+const createUser = async (req: Request, res: Response) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
 
-  const { name, email, password } = req.body;
+  const userSchema = z.object({
+    name: z.string(),
+    email: z.string(),
+    password: z.string(),
+    avatar: z.string()
+  })
+
+  const { name, password, avatar } = userSchema.parse(req.body)
+
+  let email: any
 
   try {
     // See if user exists
-    if (await GetUserByEmail(email)) {
-      return res.status(400).json({ errors: [{ msg: "Usuário já existe" }] });
+    if (email) {
+      await getUserByEmail(email)
+      return Response.json({ errors: [{ msg: "Usuário já existe" }] });
     }
-
-    const avatar = ""
     const cryptPassword = await bcrypt.hash(password, await bcrypt.genSalt(10));
 
     // Register new user
@@ -33,11 +44,11 @@ const createUser = async (req, res) => {
         },
       },
       // eslint-disable-next-line no-undef
-      process.env.JWT_SECRET,
+      process.env.JWT_SECRET as string,
       { expiresIn: 360000 },
       (err, token) => {
         if (err) throw err;
-        res.json({
+        Response.json({
           _id: user._id,
           name: user.name,
           email: user.email,
@@ -47,7 +58,7 @@ const createUser = async (req, res) => {
       }
     );
   } catch (err) {
-    console.error(err.message);
+    console.error(err);
     res.status(500).send("Erro no Servidor");
   }
 };

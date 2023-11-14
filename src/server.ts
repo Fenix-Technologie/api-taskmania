@@ -1,8 +1,8 @@
-require("dotenv").config();
-const express = require("express");
-const db = require("./config/config");
-const cors = require("cors");
-const router = require("./controllers/router");
+import express from 'express'
+import cors from 'cors'
+import { router } from './controllers/router';
+import { db } from './config/config';
+import 'dotenv/config'
 
 const app = express();
 
@@ -12,7 +12,7 @@ db();
 app.use(cors());
 
 // Init middleware
-app.use(express.json({ extended: false }));
+app.use(express.json({ strict: false }));
 
 app.use("/api", router);
 
