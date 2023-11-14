@@ -3,7 +3,9 @@ const jwt = require("jsonwebtoken");
 const { validationResult } = require("express-validator");
 const User = require("../../models/User");
 
-const authenticateUser = async (req, res) => {
+import { Request, Response } from 'express'
+
+export const authenticateUser = async (req: Request, res: Response) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
@@ -37,7 +39,7 @@ const authenticateUser = async (req, res) => {
       },
       process.env.JWT_SECRET,
       { expiresIn: 360000 },
-      (err, token) => {
+      (err: Error, token: string) => {
         if (err) throw err;
         res.json({
           _id: user._id,
@@ -49,9 +51,7 @@ const authenticateUser = async (req, res) => {
       }
     );
   } catch (err) {
-    console.error(err.message);
+    console.error(err);
     res.status(500).send("Erro no Servidor");
   }
 };
-
-module.exports = authenticateUser;

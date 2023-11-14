@@ -1,13 +1,12 @@
-const express = require("express");
-const router = express.Router();
 
 const auth = require("../../middleware/auth");
+import express from 'express'
+import 'dotenv/config'
+import { check } from 'express-validator'
+import { authenticateUser } from './authenticateUser';
+import { getAuthorizedUsers } from './getAuthorizedUsers';
 
-const { check } = require("express-validator");
-require("dotenv").config();
-
-const getAuthorizedUsers = require("./getAuthorizedUsers");
-const authenticateUser = require("./authenticateUser");
+export const router = express.Router();
 
 // Get authorized user
 router.get("/", auth, getAuthorizedUsers);
@@ -22,4 +21,3 @@ router.post(
   authenticateUser
 );
 
-module.exports = router;
