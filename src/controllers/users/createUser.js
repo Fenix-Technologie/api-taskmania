@@ -1,5 +1,4 @@
 require("dotenv").config();
-const gravatar = require("gravatar");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Create = require("../../models/User/Create");
@@ -20,7 +19,7 @@ const createUser = async (req, res) => {
       return res.status(400).json({ errors: [{ msg: "Usuário já existe" }] });
     }
 
-    const avatar = gravatar.url(email, { s: "200", r: "pg", d: "mm" });
+    const avatar = ""
     const cryptPassword = await bcrypt.hash(password, await bcrypt.genSalt(10));
 
     // Register new user
